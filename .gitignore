@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+
+# ML / YOLO
+runs/
+weights/
+models/
+*.pt
+*.pth
+*.onnx
+
+# Data
+data/
+datasets/
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# Logs / outputs
+logs/
+outputs/
+
+# IDEs
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
