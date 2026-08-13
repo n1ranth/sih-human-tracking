@@ -29,8 +29,21 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     fd-find \
     libxcb1 \
     libx11-6 \
+    libx11-xcb1 \
     libxext6 \
     libxrender1 \
+    libxcb-render0 \
+    libxcb-shm0 \
+    libxcb-xfixes0 \
+    libxcb-randr0 \
+    libxcb-image0 \
+    libxcb-keysyms1 \
+    libxcb-icccm4 \
+    libxcb-sync1 \
+    libxcb-util1 \
+    libxcb-xkb1 \
+    libxcb-xinerama0 \
+    libxkbcommon-x11-0 \
     libgl1 \
     libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
@@ -108,6 +121,15 @@ RUN pip install --no-cache-dir \
 
 RUN pip install --no-cache-dir \
     black
+
+# ------------------------------------------------------------
+# OpenCV GUI / Qt dependencies
+# ------------------------------------------------------------
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libsm6 \
+    libice6 \
+    && rm -rf /var/lib/apt/lists/*
 
 # ------------------------------------------------------------
 # Workspace
