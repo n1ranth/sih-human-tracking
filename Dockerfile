@@ -14,9 +14,19 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     python3-pip \
     python3-venv \
     build-essential \
+    unzip \
+    cmake \
+    ninja-build \
+    clang \
+    clangd \
+    clang-format \
     git \
     curl \
     wget \
+    nodejs \
+    npm \
+    ripgrep \
+    fd-find \
     libxcb1 \
     libx11-6 \
     libxext6 \
@@ -95,6 +105,40 @@ RUN pip install --no-cache-dir \
 
 RUN pip install --no-cache-dir \
     ultralytics
+
+# ------------------------------------------------------------
+# Node / LSP tools
+# ------------------------------------------------------------
+
+RUN npm install -g \
+    bash-language-server \
+    pyright
+
+# ------------------------------------------------------------
+# Neovim
+# ------------------------------------------------------------
+
+WORKDIR /tmp
+
+RUN git clone \
+    --branch v0.11.6 \
+    --depth=1 \
+    https://github.com/neovim/neovim.git \
+    /tmp/neovim \
+    && cd /tmp/neovim \
+    && make CMAKE_BUILD_TYPE=Release \
+    && make install \
+    && rm -rf /tmp/neovim
+
+# ------------------------------------------------------------
+# Neovim configuration
+# ------------------------------------------------------------
+
+RUN mkdir -p /root/.config \
+    && git clone \
+    --depth=1 \
+    https://github.com/znwng/nvim-minimal.git \
+    /root/.config/nvim
 
 # ------------------------------------------------------------
 # Workspace
