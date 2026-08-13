@@ -46,6 +46,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libxkbcommon-x11-0 \
     libgl1 \
     libglib2.0-0 \
+    libsm6 \
+    libice6 \
+    fontconfig \
+    fonts-dejavu \
+    && fc-cache -f \
     && rm -rf /var/lib/apt/lists/*
 
 # ------------------------------------------------------------
@@ -121,15 +126,6 @@ RUN pip install --no-cache-dir \
 
 RUN pip install --no-cache-dir \
     black
-
-# ------------------------------------------------------------
-# OpenCV GUI / Qt dependencies
-# ------------------------------------------------------------
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    libsm6 \
-    libice6 \
-    && rm -rf /var/lib/apt/lists/*
 
 # ------------------------------------------------------------
 # Workspace
