@@ -107,40 +107,6 @@ RUN pip install --no-cache-dir \
     ultralytics
 
 # ------------------------------------------------------------
-# Node / LSP tools
-# ------------------------------------------------------------
-
-RUN npm install -g \
-    bash-language-server \
-    pyright
-
-# ------------------------------------------------------------
-# Neovim
-# ------------------------------------------------------------
-
-WORKDIR /tmp
-
-RUN git clone \
-    --branch v0.11.6 \
-    --depth=1 \
-    https://github.com/neovim/neovim.git \
-    /tmp/neovim \
-    && cd /tmp/neovim \
-    && make CMAKE_BUILD_TYPE=Release \
-    && make install \
-    && rm -rf /tmp/neovim
-
-# ------------------------------------------------------------
-# Neovim configuration
-# ------------------------------------------------------------
-
-RUN mkdir -p /root/.config \
-    && git clone \
-    --depth=1 \
-    https://github.com/znwng/nvim-minimal.git \
-    /root/.config/nvim
-
-# ------------------------------------------------------------
 # Workspace
 # ------------------------------------------------------------
 
