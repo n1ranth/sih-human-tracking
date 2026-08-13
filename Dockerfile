@@ -106,6 +106,9 @@ RUN pip install --no-cache-dir \
 RUN pip install --no-cache-dir \
     ultralytics
 
+RUN pip install --no-cache-dir \
+    black
+
 # ------------------------------------------------------------
 # Workspace
 # ------------------------------------------------------------
