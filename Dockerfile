@@ -127,6 +127,11 @@ RUN pip install --no-cache-dir \
 RUN pip install --no-cache-dir \
     black
 
+RUN pip install --no-cache-dir \
+    numpy \
+    tqdm \
+    scikit-learn
+
 # ------------------------------------------------------------
 # Workspace
 # ------------------------------------------------------------
