@@ -48,9 +48,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libglib2.0-0 \
     libsm6 \
     libice6 \
-    fontconfig \
-    fonts-dejavu \
-    && fc-cache -f \
     && rm -rf /var/lib/apt/lists/*
 
 # ------------------------------------------------------------
@@ -116,18 +113,10 @@ ENV PATH="/opt/venv/bin:$PATH"
 RUN pip install --no-cache-dir \
     torch \
     torchvision \
-    torchaudio
-
-RUN pip install --no-cache-dir \
-    opencv-python
-
-RUN pip install --no-cache-dir \
-    ultralytics
-
-RUN pip install --no-cache-dir \
-    black
-
-RUN pip install --no-cache-dir \
+    torchaudio \
+    opencv-python \
+    ultralytics \
+    black \
     numpy \
     tqdm \
     scikit-learn

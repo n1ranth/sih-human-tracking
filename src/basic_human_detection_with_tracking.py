@@ -7,12 +7,19 @@ video = cv2.VideoCapture("archive/Videos/Videos/fall/YOUTUBE_YouTubeCCTV001_fall
 
 width = int(video.get(cv2.CAP_PROP_FRAME_WIDTH))
 height = int(video.get(cv2.CAP_PROP_FRAME_HEIGHT))
+fps = video.get(cv2.CAP_PROP_FPS)
 
-cv2.namedWindow("Basic Human Detection + Tracking", cv2.WINDOW_NORMAL)
-cv2.resizeWindow("Basic Human Detection + Tracking", width // 2, height // 2)
+fourcc = cv2.VideoWriter_fourcc(*"mp4v")
+writer = cv2.VideoWriter(
+    output_path,
+    fourcc,
+    fps,
+    (width, height),
+)
 
 while True:
     ret, frame = video.read()
+
     if not ret:
         break
 
@@ -27,10 +34,9 @@ while True:
 
     annotated = results[0].plot()
 
-    cv2.imshow("Basic Human Detection + Tracking", annotated)
-
-    if cv2.waitKey(1) & 0xFF == ord("q"):
-        break
+    writer.write(annotated)
 
 video.release()
-cv2.destroyAllWindows()
+writer.release()
+
+print(f"Saved output to: {output_path}")
