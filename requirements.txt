@@ -1,0 +1,16 @@
+# Core inference and tracking
+torch
+torchvision
+torchaudio
+ultralytics
+opencv-python
+numpy
+
+# BoT-SORT and ReID runtime
+lap>=0.5.12
+onnx
+onnxruntime-gpu
+
+# Training utilities
+tqdm
+scikit-learn
